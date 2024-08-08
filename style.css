@@ -1,0 +1,124 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: cursive;
+}
+body{
+    background-color: #96bdc6;
+}
+.container{
+    background-color: rgb(223, 221, 221);
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
+    margin: 20px auto;
+    margin-top: 50px;
+    border-radius: 1%;
+}
+form{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 30px;
+    align-items: center;
+}
+form input[type="text"]{
+    padding: 10px;
+    font-size: 18px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+form button[type="submit"]{
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: rgb(189, 56, 8);
+    border-radius: 3px;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+form button[type="submit"]:hover{
+    background-color: rgb(142, 41, 4);
+}
+
+.weatherBody{
+    margin-top: 30px;
+}
+.icon img{
+    height: 180px;
+    width: 180px;
+    background-repeat:no-repeat;
+    background-size: contain;
+    background-position: center center;
+}
+.temp{
+    font-weight: 1000;
+    font-size:40px;
+    margin-top: 20px;
+    display: none;
+}
+.desc{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size:30px;
+    font-weight: 700;
+    display: none;
+}
+.details{
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+}
+.details>div{
+    padding: 12px 15px;
+    background-color: rgba(255, 255, 255, 0.753);
+    border-radius: 5px;
+    width: 28%;
+    flex: 1;
+    min-height: 40px;
+    margin: 10px;
+    min-height: 40px;
+    text-align: center;
+    font-size: 30px;
+}
+.details div div{
+    line-height: 150%;
+}
+.text{
+    color: navy;
+    font-size: 23px;
+    font-family: 'Times New Roman', Times, serif;
+    }
+.text p{
+    font-size: 20px;
+    font-weight: 550;
+    color: black;
+}
+
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: solid black 4px; */
+    display: none;
+}
+
+.error img{
+    height: 100%;
+    width: 80%;
+    filter: drop-shadow(10px 10px 20px rgb(0, 0, 0));
+}
+
+.error h1{
+    font-size: 25px;
+    font-weight: bold;
+    color: #333232;
+    margin-bottom: 20px;
+}
