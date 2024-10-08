@@ -11,18 +11,10 @@ const weatherBody=document.querySelector('.weatherData')
 const details=document.querySelector('.details')
 
 async function checkWeather(city){
-    const url = `https://yahoo-weather5.p.rapidapi.com/weather?location=${city}&format=json&u=f`;  
-    const options = {
-        method: 'GET',
-        headers: {
-            'x-rapidapi-key': '3f4f0b1b2bmsh2e5d4ea53f1dd43p1f5e5cjsn31ef840e7b55',
-            'x-rapidapi-host': 'yahoo-weather5.p.rapidapi.com'
-        }
-    };  
-    const response = await fetch(url, options);
-    const weatherData = await response.json();
-
-    if (!response.ok || !weatherData.current_observation) {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=36a1b11c99e7ae95493528c358082079&units=metric`;  
+const response = await fetch(url);
+const weatherData = await response.json();
+    if (!response.ok || !weatherData.main.temp) {
         err.style.display = "flex";
         weatherBody.style.display = "none";
         details.style.display="none"
@@ -34,29 +26,33 @@ else{
     details.style.display="flex"
     temp.style.display="block"
     desc.style.display="block"
-
-    temp.innerHTML = `${(((weatherData.current_observation.condition.temperature) - 32) * 5 / 9).toFixed(2)}°C`
-    desc.innerHTML = `${weatherData.current_observation.condition.text}`
-    visibility.innerHTML = `${weatherData.current_observation.atmosphere.visibility} miles`
-    humidity.innerHTML = `${weatherData.current_observation.atmosphere.humidity}%`
-    windSpeed.innerHTML = `${((weatherData.current_observation.wind.speed) * 0.44704).toFixed(2)} m/s`
+    temp.innerHTML = `${weatherData.main.temp}°C`
+    desc.innerHTML = `${weatherData.weather[0].description}`
+    visibility.innerHTML = `${weatherData.visibility} miles`
+    humidity.innerHTML = `${weatherData.main.humidity}%`
+    windSpeed.innerHTML = `${weatherData.wind.speed} m/s`
 
     
-    switch(weatherData.current_observation.condition.text){
-        case "Cloudy":
+    switch(weatherData.weather[0].description){
+        case "clouds":
             weatherImg.src="assets/cloud.png"
             break;
-        case "Clear":
+        case "clear":
             weatherImg.src="assets/clear.png"
             break;
-        case "Rain":
-        case "Showers":
+        case "rain":
+        case "thunderstorm":
+        case "drizzle":
+        case "showers":
             weatherImg.src="assets/rain.png"
             break;
-        case "Mist":
+        case "mist":
+        case "fog":
+        case "haze":
+        case "Atmosphere":
             weatherImg.src="assets/mist.png"
             break;
-        case "Snow":
+        case "snow":
             weatherImg.src="assets/snow.png"
             break;
    
